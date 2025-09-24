@@ -1,0 +1,56 @@
+{
+  "name": "MLOps GPU Dev Container",
+  
+  // Use your Dockerfile at the repo root
+  "build": {
+    "dockerfile": "../Dockerfile",    // relative to .devcontainer/devcontainer.json
+    "context": "..",                  // repo root
+    "args": {
+      "USERNAME": "isaac",
+      "UID": "1000",
+      "GID": "1000"
+    }
+  },
+
+  // GPU + security settings similar to your podman-compose
+  "runArgs": [
+    "--gpus=all",
+    "--security-opt=no-new-privileges:true",
+    "--userns=keep-id"
+  ],
+
+  // Mount your repo root into /workspace in the container
+  "workspaceFolder": "/workspace",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
+
+  // UID:GID (non-root user)
+  "remoteUser": "1000:1000",
+
+  // Run GPU detection script on create
+  "postCreateCommand": "python /usr/local/bin/init_device.py",
+
+  // VS Code customizations
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-toolsai.jupyter",
+        "ms-azuretools.vscode-docker"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "/usr/bin/python3"
+      }
+    }
+  },
+
+  // Optional: Mount /dev for GPU device access if needed
+  "mounts": [
+    "source=/dev,target=/dev,type=bind"
+  ],
+
+  // Forward common ports
+  "forwardPorts": [8888, 5000, 8080],
+
+  // Don't override entrypoint/command
+  "overrideCommand": false
+}
