@@ -1,0 +1,89 @@
+# Core ML / Data Science
+numpy
+pandas
+scipy
+matplotlib
+seaborn
+scikit-learn
+mlflow
+dvc
+cookiecutter-data-science
+pytest
+deepchecks
+evidently
+sdv
+
+# Deep Learning
+torch
+torchvision
+torchaudio
+tensorflow
+keras
+pytorch-lightning
+xgboost
+lightgbm
+catboost
+optuna
+transformers
+
+# Image / CV
+opencv-python
+scikit-image
+Pillow
+imageio
+albumentations
+imgaug
+
+# NLP
+nltk
+spacy
+gensim
+textblob
+
+# Backend / Web
+fastapi
+uvicorn
+gunicorn
+flask
+django
+starlette
+httpx
+requests
+
+# Data Handling / ETL / Analytics
+dask
+polars
+pyarrow
+fastparquet
+sqlalchemy
+psycopg2-binary
+mysql-connector-python
+openpyxl
+xlrd
+pydantic
+
+# Network / OS / System utilities
+paramiko
+psutil
+netifaces
+scapy
+sh
+
+# Utilities / Others
+tqdm
+joblib
+black
+isort
+mypy
+rich
+loguru
+python-dotenv
+pydot
+graphviz
+
+# Jupyter / Notebook
+jupyter
+notebook
+ipywidgets
+widgetsnbextension
+jupyterlab
