@@ -1,0 +1,21 @@
+services:
+  mlops:
+    build:
+      context: .
+      args:
+        USERNAME: isaac        # default container user
+        UID: ${MYUID:-1000}    # map to host UID
+        GID: ${MYGID:-1000}    # map to host GID
+    image: mlops:latest
+    volumes:
+            - .:/workspace:Z,U
+    working_dir: /workspace
+    devices:
+      - nvidia.com/gpu=all
+    stdin_open: true
+    tty: true
+
+    # Enforce rootless execution
+    user: "${MYUID:-1000}:${MYGID:-1000}"
+    security_opt:
+      - no-new-privileges:true
